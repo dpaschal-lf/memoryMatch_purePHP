@@ -27,6 +27,7 @@ if(!empty($_SESSION[MM_SESSION_KEY]['indicesToRevert'])){
 
 if(!empty($_GET['reset'])){
 	unset($_SESSION[MM_SESSION_KEY]);
+	header('location: index.php');
 }
 
 if(empty($_SESSION[MM_SESSION_KEY])){
@@ -45,8 +46,13 @@ function checkAndHandleCardMatch(&$clickedCardsIndices, &$stateArray, $imageArra
 	}
 	$clickedCardsIndices = [];
 	$_SESSION[MM_SESSION_KEY]['matchCount']++;
-	if(IMAGECOUNT === $_SESSION[MM_SESSION_KEY]['matchCount']){
-		print("YOU WIN");
+
+	if(IMAGECOUNT ===$_SESSION[MM_SESSION_KEY]['matchCount']){
+		$content = "
+			<h3>You win!</h3>
+			<a href='?reset=true'>Play again</a>
+		";
+		include('modal.php');
 	}
 	return $match;
 }
