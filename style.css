@@ -25,7 +25,6 @@ body{
 }
 .back{
 	background-image: url(images/cardBack.jpg);
-	opacity: .4;
 }
 .front{
 }
